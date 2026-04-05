@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta property="og:title" content="YCONFIGS | Zero Delay & Pro Aim">
-<meta property="og:description" content="Eliminate input lag and unlock magnetic aim assist. Experience the ultimate competitive advantage.">
-<meta property="og:image" content="https://i.imgur.com/pYFf8sh.png">
-<meta name="twitter:card" content="summary_large_image">
+    <meta property="og:description" content="Eliminate input lag and unlock magnetic aim assist. Experience the ultimate competitive advantage.">
+    <meta property="og:image" content="https://i.imgur.com/pYFf8sh.png">
+    <meta name="twitter:card" content="summary_large_image">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YCONFIGS | Architecture Comparison</title>
@@ -21,53 +21,59 @@
             overflow-x: hidden;
         }
 
-        /* Text Gradients & Neon */
         .text-gradient {
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .neon-text-gold {
             color: #fde047;
-            text-shadow: 0 0 10px rgba(253, 224, 71, 0.6), 0 0 20px rgba(253, 224, 71, 0.3);
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.8), 0 0 20px rgba(253, 224, 71, 0.4);
         }
 
-        /* Panels */
         .glass-panel {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Hybrid Specifics */
         .hybrid-header {
-            background: linear-gradient(180deg, rgba(30, 25, 10, 0.95) 0%, rgba(20, 15, 5, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(30, 25, 10, 0.98) 0%, rgba(20, 15, 5, 0.95) 100%);
             border: 2px solid #eab308;
             border-bottom: none;
-            box-shadow: 0 -15px 40px -10px rgba(234, 179, 8, 0.25);
-            z-index: 20;
+            box-shadow: 0 -20px 50px -10px rgba(234, 179, 8, 0.3);
+            z-index: 30;
             position: relative;
+            transform: scale(1.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        
+        .hybrid-header:hover {
+            transform: scale(1.08);
+        }
+
         .hybrid-column {
-            background: linear-gradient(180deg, rgba(20, 15, 5, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+            background: linear-gradient(180deg, rgba(253, 224, 71, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%);
             border-left: 2px solid #eab308;
             border-right: 2px solid #eab308;
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.05);
+            box-shadow: inset 0 0 30px rgba(234, 179, 8, 0.05);
             z-index: 10;
         }
 
-        /* Button Shine */
         .cta-btn {
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
             background-size: 200% auto;
         }
+        
         .cta-btn:hover {
-            transform: scale(1.03) translateY(-2px);
-            box-shadow: 0 20px 40px -10px rgba(234, 179, 8, 0.5);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(234, 179, 8, 0.6), 0 0 20px rgba(253, 224, 71, 0.4);
         }
+        
         .cta-btn::after {
             content: '';
             position: absolute;
@@ -75,17 +81,17 @@
             left: -60%;
             width: 20%;
             height: 200%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
             transform: rotate(30deg);
-            animation: shine-sweep 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            animation: shine-sweep 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         @keyframes shine-sweep {
             0% { left: -60%; }
             20% { left: 120%; }
             100% { left: 120%; }
         }
 
-        /* Ambient Background */
         .ambient-orb {
             position: fixed;
             border-radius: 50%;
@@ -93,68 +99,85 @@
             z-index: -1;
             opacity: 0.15;
             animation: pulse-orb 8s infinite alternate ease-in-out;
-        }
-        @keyframes pulse-orb {
-            0% { transform: scale(1); opacity: 0.1; }
-            100% { transform: scale(1.2); opacity: 0.2; }
+            pointer-events: none;
         }
         
-        /* Table Row Hover */
+        @keyframes pulse-orb {
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.2); opacity: 0.25; }
+        }
+        
         .feature-row { transition: all 0.2s ease; }
-        .feature-row:hover { background-color: rgba(255, 255, 255, 0.03); }
+        .feature-row:hover { background-color: rgba(255, 255, 255, 0.04); }
+        
+        /* Custom Scrollbar for horizontal scrolling */
+        ::-webkit-scrollbar { height: 6px; width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
     </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-white">
 
+    <div class="w-full bg-yellow-500 text-black text-center py-2 px-4 text-xs md:text-sm font-black tracking-[0.2em] uppercase z-50 relative shadow-[0_0_15px_rgba(234,179,8,0.4)] flex justify-center items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+        HIGH DEMAND: Only 3 Y HYBRID slots remaining today
+        <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+    </div>
+
     <div class="ambient-orb w-[600px] h-[600px] bg-cyan-600 top-[-20%] left-[-10%] animate__animated animate__fadeIn"></div>
     <div class="ambient-orb w-[700px] h-[700px] bg-blue-800 bottom-[-30%] right-[-10%] animate__animated animate__fadeIn"></div>
-    <div class="ambient-orb w-96 h-96 bg-yellow-500 top-[20%] right-[10%] opacity-10 animate__animated animate__fadeIn"></div>
+    <div class="ambient-orb w-96 h-96 bg-yellow-500 top-[20%] right-[10%] opacity-20 animate__animated animate__fadeIn"></div>
 
-    <main class="max-w-7xl mx-auto px-4 py-16 relative z-10">
+    <main class="max-w-7xl mx-auto px-4 py-12 relative z-10">
         
-        <header class="text-center mb-20 animate__animated animate__fadeInDown">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] md:text-xs font-black tracking-[0.2em] text-slate-400 uppercase mb-6 shadow-xl backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.8)]"></span>
-                SYSTEM ARCHITECTURE COMPARISON
+        <header class="text-center mb-16 animate__animated animate__fadeInDown">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-slate-700 bg-slate-900/80 text-[10px] md:text-xs font-black tracking-[0.2em] text-slate-400 uppercase mb-6 shadow-xl backdrop-blur-md">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                Tested & Verified For Current Season
             </div>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-2 text-white">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4 text-white">
                 Y<span class="text-gradient drop-shadow-lg">CONFIGS</span>
             </h1>
-            <p class="text-xl text-slate-400 font-light">
+            <p class="text-xl md:text-2xl text-slate-400 font-light">
                 Choose your tier. <span class="text-white font-bold">Dominate the lobby.</span>
             </p>
         </header>
 
+        <div class="md:hidden text-center text-slate-500 text-xs font-bold uppercase tracking-widest mb-4 animate-pulse">
+            Swipe to compare specs &rarr;
+        </div>
+
         <div class="overflow-x-auto pb-10 animate__animated animate__fadeInUp">
             <div class="min-w-[950px] px-2 max-w-6xl mx-auto">
                 
-                <div class="grid grid-cols-4 items-end">
+                <div class="grid grid-cols-4 items-end relative">
                     
                     <div class="p-4"></div>
 
-                    <div class="glass-panel rounded-t-2xl p-8 text-center border-b-0 relative z-0">
+                    <div class="glass-panel rounded-t-2xl p-8 text-center border-b-0 relative z-0 transition-colors hover:bg-slate-800/80">
                         <h3 class="text-slate-400 font-bold uppercase tracking-widest text-xs mb-3">Y POLO FREE</h3>
                         <div class="text-4xl font-extrabold text-white mb-2">$0.00</div>
                         <div class="inline-block px-3 py-1 bg-slate-800 rounded text-slate-400 text-[10px] font-bold uppercase tracking-widest">Entry Level</div>
                     </div>
 
-                    <div class="glass-panel rounded-t-2xl p-10 text-center border-b-0 border-t-2 border-t-blue-500/50 relative z-0">
+                    <div class="glass-panel rounded-t-2xl p-10 text-center border-b-0 border-t-2 border-t-blue-500/50 relative z-0 transition-colors hover:bg-slate-800/80">
                         <h3 class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-3">Y PREMIUM</h3>
                         <div class="text-4xl font-extrabold text-white mb-2">$59.99</div>
                         <div class="inline-block px-3 py-1 bg-blue-900/40 border border-blue-500/30 rounded text-blue-300 text-[10px] font-bold uppercase tracking-widest">Advanced Setup</div>
                     </div>
 
-                    <div class="hybrid-header rounded-t-2xl pt-12 pb-10 px-8 text-center transform scale-105 origin-bottom">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-black font-black text-[10px] px-4 py-1 rounded-full whitespace-nowrap tracking-widest uppercase shadow-[0_0_15px_rgba(234,179,8,0.5)]">
-                            Competitive Standard
+                    <div class="hybrid-header rounded-t-2xl pt-12 pb-10 px-8 text-center origin-bottom">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black font-black text-[11px] px-5 py-1.5 rounded-full whitespace-nowrap tracking-[0.15em] uppercase shadow-[0_0_20px_rgba(234,179,8,0.6)] animate-bounce">
+                            ★ PROs Choice
                         </div>
                         <h3 class="text-yellow-400 font-black uppercase tracking-widest text-xs mb-3 neon-text-gold">Y HYBRID</h3>
-                        <div class="text-5xl font-black text-white mb-2 drop-shadow-xl">$79.00</div>
+                        <div class="text-5xl font-black text-white mb-2 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">$79.00</div>
                         <div class="inline-block px-3 py-1 bg-yellow-500/20 border border-yellow-500/50 rounded text-yellow-400 text-[10px] font-bold uppercase tracking-widest">Elite Performance</div>
                     </div>
                 </div>
 
-                <div class="glass-panel rounded-b-2xl overflow-hidden shadow-2xl relative">
+                <div class="glass-panel rounded-b-2xl overflow-hidden shadow-2xl relative border border-slate-700/50">
                     
                     <div class="absolute right-0 bottom-0 w-1/4 h-full pointer-events-none border-b-2 border-r-2 border-eab308 hybrid-column" style="border-color: #eab308; border-bottom-right-radius: 1rem;"></div>
 
@@ -169,7 +192,7 @@
                         <div class="p-6 font-medium text-slate-300 text-sm">Input Processing</div>
                         <div class="p-6 text-center text-slate-500 text-sm border-x border-white/5">Standard</div>
                         <div class="p-6 text-center text-white font-semibold text-sm border-r border-white/5">Fast</div>
-                        <div class="p-6 text-center font-black neon-text-gold text-base hybrid-column">Zero Delay</div>
+                        <div class="p-6 text-center font-black neon-text-gold text-base hybrid-column">True Zero Delay</div>
                     </div>
 
                     <div class="grid grid-cols-4 feature-row border-t border-white/5 items-center relative z-20">
@@ -179,89 +202,74 @@
                         <div class="p-6 text-center font-black neon-text-gold text-sm hybrid-column tracking-wide">Enhanced Analytics</div>
                     </div>
 
+                    <svg style="display: none;">
+                        <defs>
+                            <path id="icon-cross" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            <path id="icon-check" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        </defs>
+                    </svg>
+
                     <div class="grid grid-cols-4 feature-row border-t border-white/5 items-center relative z-20">
                         <div class="p-6 font-medium text-slate-300 text-sm">Smart Tracking Algorithm</div>
-                        <div class="p-6 flex justify-center border-x border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center border-r border-white/5">
-                            <svg class="w-6 h-6 text-blue-400 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center hybrid-column">
-                            <svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
+                        <div class="p-6 flex justify-center border-x border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center border-r border-white/5"><svg class="w-6 h-6 text-blue-400 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
+                        <div class="p-6 flex justify-center hybrid-column"><svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
                     </div>
 
                     <div class="grid grid-cols-4 feature-row border-t border-white/5 items-center relative z-20">
                         <div class="p-6 font-medium text-slate-300 text-sm">Dynamic Smoothing</div>
-                        <div class="p-6 flex justify-center border-x border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center border-r border-white/5">
-                            <svg class="w-6 h-6 text-blue-400 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center hybrid-column">
-                            <svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
+                        <div class="p-6 flex justify-center border-x border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center border-r border-white/5"><svg class="w-6 h-6 text-blue-400 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
+                        <div class="p-6 flex justify-center hybrid-column"><svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
                     </div>
 
                     <div class="grid grid-cols-4 feature-row border-t border-white/5 items-center relative z-20 bg-yellow-500/5">
-                        <div class="p-6 font-medium text-yellow-100/80 text-sm">Latency-Neutral Core</div>
-                        <div class="p-6 flex justify-center border-x border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center border-r border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center hybrid-column">
-                            <svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
+                        <div class="p-6 font-medium text-yellow-100/90 text-sm">Latency-Neutral Core</div>
+                        <div class="p-6 flex justify-center border-x border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center border-r border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center hybrid-column"><svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
                     </div>
 
                     <div class="grid grid-cols-4 feature-row border-t border-white/5 items-center relative z-20 bg-yellow-500/5">
-                        <div class="p-6 font-medium text-yellow-100/80 text-sm">VIP Server Support</div>
-                        <div class="p-6 flex justify-center border-x border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center border-r border-white/5">
-                            <svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </div>
-                        <div class="p-6 flex justify-center hybrid-column">
-                            <svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
+                        <div class="p-6 font-medium text-yellow-100/90 text-sm">VIP Server Support</div>
+                        <div class="p-6 flex justify-center border-x border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center border-r border-white/5"><svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-cross"></use></svg></div>
+                        <div class="p-6 flex justify-center hybrid-column"><svg class="w-7 h-7 text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="#icon-check"></use></svg></div>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <section class="mt-12 text-center max-w-3xl mx-auto px-4 animate__animated animate__fadeInUp animate__delay-1s">
-            <div class="glass-panel p-10 md:p-14 rounded-[2rem] border border-yellow-500/30 shadow-[0_0_60px_rgba(0,0,0,0.6)] relative overflow-hidden">
+        <section class="mt-8 text-center max-w-4xl mx-auto px-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="glass-panel p-10 md:p-16 rounded-[2rem] border-2 border-yellow-500/40 shadow-[0_0_80px_rgba(234,179,8,0.15)] relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-t from-yellow-500/10 to-transparent pointer-events-none"></div>
                 
-                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight relative z-10">
-                    Stop Losing 50/50 Fights.
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight relative z-10">
+                    Stop Choking Endgames.
                 </h2>
-                <p class="text-lg text-slate-300 mb-10 leading-relaxed font-light relative z-10">
-                    Your current setup is bottlenecking your mechanics. The <span class="text-yellow-400 font-bold">Y HYBRID CONFIG</span> is the exact architecture used by the top 1% to dominate.
+                <p class="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed font-light relative z-10 max-w-2xl mx-auto">
+                    The <span class="text-yellow-400 font-bold">Y HYBRID architecture</span> is strictly limited to maintain server integrity. 
+                    <span class="block mt-2 font-semibold text-white">Only <span class="text-red-400 animate-pulse">3 slots</span> left today. Upgrade now or stay behind.</span>
                 </p>
                 
-                <a href="https://payhip.com/YCONFIGS" target="_blank" class="cta-btn inline-block px-10 py-5 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-black font-black text-xl rounded-2xl uppercase tracking-[0.15em] relative z-10 w-full sm:w-auto">
+                <a href="https://payhip.com/YCONFIGS" target="_blank" class="cta-btn inline-flex items-center justify-center gap-3 px-12 py-5 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-black font-black text-xl md:text-2xl rounded-2xl uppercase tracking-[0.1em] relative z-10 w-full sm:w-auto shadow-2xl">
                     Unlock Pro Performance
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
                 
-                <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-slate-400 text-[10px] md:text-xs font-bold tracking-widest uppercase relative z-10">
-                    <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Instant Delivery</span>
-                    <span class="hidden sm:inline w-1 h-1 rounded-full bg-slate-600"></span>
-                    <span class="flex items-center"><svg class="w-4 h-4 mr-1 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Secure Checkout</span>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-slate-400 text-[10px] md:text-xs font-bold tracking-widest uppercase relative z-10">
+                    <span class="flex items-center bg-slate-900/50 px-3 py-1.5 rounded-lg border border-white/5"><svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Instant Delivery</span>
+                    <span class="flex items-center bg-slate-900/50 px-3 py-1.5 rounded-lg border border-white/5"><svg class="w-4 h-4 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Secure Checkout</span>
+                    <span class="flex items-center bg-slate-900/50 px-3 py-1.5 rounded-lg border border-white/5"><svg class="w-4 h-4 mr-2 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg> 2.5K+ Active Users</span>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="mt-20 pb-10 text-center relative z-10 animate__animated animate__fadeIn">
-        <div class="w-16 h-1 bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-6"></div>
+    <footer class="mt-16 pb-8 text-center relative z-10 animate__animated animate__fadeIn">
+        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-slate-600 to-transparent mx-auto mb-6"></div>
         <p class="text-slate-600 text-[10px] font-bold tracking-[0.25em] uppercase">
             &copy; 2026 YCONFIGS ARCHITECTURE. All Rights Reserved.
         </p>
